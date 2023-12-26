@@ -29,7 +29,7 @@ public class BookedRoom {
     private String guestFullName;
 
     @Column(name = "guest_email")
-    private String guestEmal;
+    private String guestEmail;
 
     @Column(name = "num_of_adults")
     private int NumOfAdults;
