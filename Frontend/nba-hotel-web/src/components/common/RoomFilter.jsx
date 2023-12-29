@@ -4,8 +4,8 @@ const RoomFilter = ({ data, setFilteredData }) => {
   const [filter, setFilter] = useState("");
 
   const handleSelectChange = (e) => {
-    const selectedRoomType = e.terget.value;
-    FileSystemWritableFileStream(selectedRoomType);
+    const selectedRoomType = e.target.value;
+    setFilter(selectedRoomType);
     const filteredRooms = data.filter((room) =>
       room.roomType.toLowerCase().includes(selectedRoomType.toLowerCase())
     );
@@ -17,7 +17,7 @@ const RoomFilter = ({ data, setFilteredData }) => {
     setFilteredData(data);
   };
 
-  const roomTypes = ["", ...new setFilter(data.map((room) => room.roomType))];
+  const roomTypes = ["", ...new Set(data.map((room) => room.roomType))];
 
   return (
     <div className="input-group mb-3">
