@@ -18,6 +18,7 @@ const BookingsTable = ({ bookingInfo, handleBookingCancellation }) => {
         );
       });
     }
+    console.log(bookingInfo);
     setFilteredBookings(filtered);
   };
 
@@ -51,23 +52,23 @@ const BookingsTable = ({ bookingInfo, handleBookingCancellation }) => {
         </thead>
         <tbody className="text-center">
           {filteredBookings.map((booking, index) => (
-            <tr>
+            <tr key={booking.bookingId}>
               <td>{index + 1}</td>
-              <td>{booking.id}</td>
+              <td>{booking.bookingId}</td>
               <td>{booking.room.id}</td>
               <td>{booking.room.roomType}</td>
               <td>{booking.checkInDate}</td>
               <td>{booking.checkOutDate}</td>
-              <td>{booking.guestName}</td>
+              <td>{booking.guestFullName}</td>
               <td>{booking.guestEmail}</td>
               <td>{booking.numOfAdults}</td>
               <td>{booking.numOfChildren}</td>
-              <td>{booking.totalNumOfGuests}</td>
+              <td>{booking.totalNumOfGuest}</td>
               <td>{booking.bookingConfirmationCode}</td>
               <td>
                 <button
                   className="btn btn-danger btn-sm"
-                  onClick={() => handleBookingCancellation(booking.id)}
+                  onClick={() => handleBookingCancellation(booking.bookingId)}
                 >
                   Cancel
                 </button>
